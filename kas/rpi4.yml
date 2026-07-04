@@ -1,0 +1,35 @@
+header:
+  version: 14
+
+machine: raspberrypi4-64
+distro: poky
+target: core-image-base
+
+repos:
+  poky:
+    url: https://git.yoctoproject.org/poky
+    branch: scarthgap
+    layers:
+      meta:
+      meta-poky:
+
+  meta-openembedded:
+    url: https://git.openembedded.org/meta-openembedded
+    branch: scarthgap
+    layers:
+      meta-oe:
+      meta-networking:
+      meta-multimedia:
+
+  meta-raspberrypi:
+    url: https://git.yoctoproject.org/meta-raspberrypi
+    branch: scarthgap
+
+local_conf_header:
+  image: |
+    IMAGE_FSTYPES = "wic.bz2"
+    ENABLE_UART = "1"
+
+  build: |
+    BB_NUMBER_THREADS = "2"
+    PARALLEL_MAKE = "-j2"

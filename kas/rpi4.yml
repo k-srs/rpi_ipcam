@@ -17,6 +17,7 @@ repos:
     url: https://git.openembedded.org/meta-openembedded
     branch: scarthgap
     layers:
+      meta-python:
       meta-oe:
       meta-networking:
       meta-multimedia:
@@ -29,6 +30,7 @@ local_conf_header:
   image: |
     IMAGE_FSTYPES = "wic.bz2"
     ENABLE_UART = "1"
+    LICENSE_FLAGS_ACCEPTED += "synaptics-killswitch"
 
   build: |
     BB_NUMBER_THREADS = "2"

@@ -70,6 +70,16 @@ meson setup --reconfigure out
 meson compile -C out
 ```
 
+### テスト
+
+テストにはCppUTestを使用する。初回の `meson setup` または `meson setup --reconfigure` で、`subprojects/cpputest.wrap` に固定されたソースを取得する。ホスト環境へのCppUTestのインストールは不要。
+
+テストをビルドして実行する。
+
+```bash
+meson test -C out --print-errorlogs
+```
+
 ### 静的解析
 
 clang-tidyは、コンパイル可能なソースコードを前提とする。先にビルドを実行し、コンパイルエラーを解消する。

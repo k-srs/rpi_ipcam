@@ -1,0 +1,13 @@
+[wrap-file]
+directory = cpputest-4.0
+source_url = https://github.com/cpputest/cpputest/archive/v4.0.tar.gz
+source_filename = cpputest-4.0.tar.gz
+source_hash = 0b66d20661f232d2a6af124c4455c8ccc9a4ce72d29f6ad4877eb385faaf5108
+patch_filename = cpputest_4.0-4_patch.zip
+patch_url = https://wrapdb.mesonbuild.com/v2/cpputest_4.0-4/get_patch
+patch_hash = f0fcefa9250bad6126b2e9e3a4243676a0eb080a60b433ccd1492c2fb8adc89d
+source_fallback_url = https://github.com/mesonbuild/wrapdb/releases/download/cpputest_4.0-4/cpputest-4.0.tar.gz
+wrapdb_version = 4.0-4
+
+[provide]
+cpputest = cpputest_dep

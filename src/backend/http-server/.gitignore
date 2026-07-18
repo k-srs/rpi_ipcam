@@ -1,1 +1,5 @@
+# Meson build output
+out/
+
+# Runtime data
 uploads/

@@ -13,6 +13,12 @@ ColumnLimit: 100
 BreakBeforeBraces: Custom
 BraceWrapping:
   AfterFunction: true
+AllowShortFunctionsOnASingleLine: None
+
+# CppUTestのテストマクロを文として扱い、波括弧と本体を複数行で整形する。
+StatementMacros:
+  - TEST
+  - TEST_GROUP
 
 # includeを辞書順に並べ、連続するincludeをグループ化する。
 SortIncludes: CaseSensitive

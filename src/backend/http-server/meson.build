@@ -1,7 +1,8 @@
 project('http-server', 'cpp',
   version : '0.1',
   default_options : ['warning_level=3',
-                     'cpp_std=c++17'])
+                     'cpp_std=c++17',
+                     'force_fallback_for=cpputest'])
 
 cpp = meson.get_compiler('cpp')
 
@@ -18,3 +19,5 @@ exe = executable(
   dependencies : http_server_dependencies,
   install : true,
 )
+
+subdir('tests')

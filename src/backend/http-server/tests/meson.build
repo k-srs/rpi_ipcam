@@ -8,6 +8,8 @@ http_server_tests = executable(
   'cpputest_integration_test.cpp',
   'config_manager_test.cpp',
   'test_main.cpp',
+  config_manager_sources,
+  include_directories : internal_include_directories,
   dependencies : cpputest_dep,
 )
 

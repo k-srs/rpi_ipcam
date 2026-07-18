@@ -1,9 +1,16 @@
 #include <CppUTest/TestHarness.h>
 
+#include "config/config_manager.hpp"
+
 TEST_GROUP(ConfigManagerTest)
 {};
 
-TEST(ConfigManagerTest, RunsRegisteredTests)
+TEST(ConfigManagerTest, ReturnsValueForKey)
 {
-    CHECK_TRUE(true);
+    ConfigManager manager;
+    int64_t expected = 3;
+
+    const auto width = manager.get("capture.width");
+
+    LONGS_EQUAL(expected, width);
 }

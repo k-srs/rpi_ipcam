@@ -3,15 +3,37 @@
 int main()
 {
     drogon::app().registerHandler(
-        "/health",
+        "/api/v1/config",
         [](const drogon::HttpRequestPtr &,
            std::function<void(const drogon::HttpResponsePtr &)> &&callback) {
+            LOG_INFO << req->methodString() << " " << req->getPath();
+
             Json::Value body;
             body["status"] = "ok";
-
-            callback(drogon::HttpResponse::newHttpJsonResponse(body));
+            auto response = drogon::HttpResponse::newHttpJsonResponse(body);
+            callback(response);
         },
         {drogon::Get});
+
+    drogon::app().registerHandler(
+        "/api/v1/config",
+        [](const drogon::HttpRequestPtr &request,
+           std::function<void(const drogon::HttpResponsePtr &)> &&callback) {
+            LOG_INFO << req->methodString() << " " << req->getPath();
+
+            const auto config = request->getJsonObject();
+            if (config == nullptr || !config->isObject()) {
+                auto response = drogon::HttpResponse::newHttpResponse();
+                response->setStatusCode(drogon::k400BadRequest);
+                callback(response);
+                return;
+            }
+
+            auto response = drogon::HttpResponse::newHttpResponse();
+            response->setStatusCode(drogon::k204NoContent);
+            callback(response);
+        },
+        {drogon::Put});
 
     drogon::app()
         .addListener("0.0.0.0", 8080)

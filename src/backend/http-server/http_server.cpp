@@ -1,12 +1,22 @@
-#include <iostream>
+#include <drogon/drogon.h>
 
-#define PROJECT_NAME "http-server"
+int main()
+{
+    drogon::app().registerHandler(
+        "/health",
+        [](const drogon::HttpRequestPtr &,
+           std::function<void(const drogon::HttpResponsePtr &)> &&callback) {
+            Json::Value body;
+            body["status"] = "ok";
 
-int main(int argc, char **argv) {
-    if(argc != 1) {
-        std::cout << argv[0] <<  "takes no arguments.\n";
-        return 1;
-    }
-    std::cout << "This is project " << PROJECT_NAME << ".\n";
+            callback(drogon::HttpResponse::newHttpJsonResponse(body));
+        },
+        {drogon::Get});
+
+    drogon::app()
+        .addListener("0.0.0.0", 8080)
+        .setThreadNum(2)
+        .run();
+
     return 0;
 }

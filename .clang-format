@@ -1,0 +1,19 @@
+# LLVM スタイルを基準に、このプロジェクトで必要な差分だけを指定する。
+BasedOnStyle: LLVM
+
+# インデントはスペース4文字とし、タブ文字は使用しない。
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+
+# 1行の上限。超える場合は可能な位置で自動的に改行する。
+ColumnLimit: 100
+
+# 関数の開始波括弧は次の行に置く。if文やラムダ式はLLVMスタイルを維持する。
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterFunction: true
+
+# includeを辞書順に並べ、連続するincludeをグループ化する。
+SortIncludes: CaseSensitive
+IncludeBlocks: Regroup

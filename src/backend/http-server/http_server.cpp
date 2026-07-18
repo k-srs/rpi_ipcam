@@ -35,10 +35,11 @@ int main()
         },
         {drogon::Put});
 
-    drogon::app()
-        .addListener("0.0.0.0", 8080)
-        .setThreadNum(2)
-        .run();
+    auto &app = drogon::app();
+
+    app.addListener("0.0.0.0", 8080);
+    app.setThreadNum(2);
+    app.run();
 
     return 0;
 }

@@ -1,0 +1,30 @@
+---
+# 最初にすべてのチェックを無効化し、以下のチェックだけを有効化する。
+# clang-diagnostic-* : コンパイルオプションで有効になっているClangの警告やエラーを表示する。
+# clang-analyzer-* : Clang Static Analyzerによる、メモリや制御フローの不具合検出。
+# bugprone-*       : バグにつながりやすいコードパターンの検出。
+# performance-*    : 不要なコピーなど、性能上の問題の検出。
+# portability-*    : コンパイラやプラットフォーム間の移植性に関する問題の検出。
+# modernize-use-nullptr : NULLや0をC++11以降のnullptrへ置き換える。
+# modernize-use-override : オーバーライドする仮想関数へのoverride指定を促す。
+Checks: >
+  -*,
+  clang-diagnostic-*,
+  clang-analyzer-*,
+  bugprone-*,
+  performance-*,
+  portability-*,
+  modernize-use-nullptr,
+  modernize-use-override
+
+# 空文字列の場合、検出した警告を一律にエラー扱いにはしない。
+WarningsAsErrors: ''
+
+# バックエンド配下のヘッダーで発生した診断だけを表示対象にする。
+HeaderFilterRegex: '.*src/backend/.*'
+
+# 標準ライブラリや外部ライブラリのシステムヘッダーは診断対象外にする。
+SystemHeaders: false
+
+# 自動修正時の書式には、最も近い親ディレクトリの.clang-formatを使用する。
+FormatStyle: file

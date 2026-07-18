@@ -6,8 +6,6 @@ int main()
         "/api/v1/config",
         [](const drogon::HttpRequestPtr &,
            std::function<void(const drogon::HttpResponsePtr &)> &&callback) {
-            LOG_INFO << req->methodString() << " " << req->getPath();
-
             Json::Value body;
             body["status"] = "ok";
             auto response = drogon::HttpResponse::newHttpJsonResponse(body);
@@ -19,8 +17,6 @@ int main()
         "/api/v1/config",
         [](const drogon::HttpRequestPtr &request,
            std::function<void(const drogon::HttpResponsePtr &)> &&callback) {
-            LOG_INFO << req->methodString() << " " << req->getPath();
-
             const auto config = request->getJsonObject();
             if (config == nullptr || !config->isObject()) {
                 auto response = drogon::HttpResponse::newHttpResponse();

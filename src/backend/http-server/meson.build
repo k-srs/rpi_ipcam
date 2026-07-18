@@ -15,7 +15,7 @@ http_server_dependencies = [
 
 exe = executable(
   'http-server',
-  'http_server.cpp',
+  'src/main.cpp',
   dependencies : http_server_dependencies,
   install : true,
 )

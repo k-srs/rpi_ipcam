@@ -87,7 +87,7 @@ clang-tidyは、コンパイル可能なソースコードを前提とする。�
 特定のソースファイルを検査する。
 
 ```bash
-clang-tidy -p out http_server.cpp
+clang-tidy -p out src/main.cpp
 ```
 
 `out/compile_commands.json` に登録されたすべてのソースファイルを検査する。
@@ -103,13 +103,13 @@ run-clang-tidy -p out
 フォーマットが必要かを、ファイルを変更せずに検査する。
 
 ```bash
-clang-format --dry-run --Werror http_server.cpp
+clang-format --dry-run --Werror src/main.cpp
 ```
 
 ファイルをフォーマットする。
 
 ```bash
-clang-format -i http_server.cpp
+clang-format -i src/main.cpp
 ```
 
 フォーマットルールは、リポジトリルートの [`.clang-format`](.clang-format) で管理する。clang-formatは、対象ファイルから親ディレクトリをたどり、最初に見つかった設定ファイルを使用する。

@@ -77,7 +77,7 @@ meson compile -C out
 テストをビルドして実行する。
 
 ```bash
-meson test -C out --print-errorlogs
+meson test -C out --verbose --test-args=-v
 ```
 
 ### 静的解析

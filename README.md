@@ -21,6 +21,38 @@ pipx ensurepath
 pipx install kas
 ```
 
+## フロントエンドのセットアップ
+
+フロントエンドは `src/frontend/rpi-viewer/` に配置しています。
+パッケージマネージャーには Bun を使用します。必要なバージョンは `package.json` の `packageManager` を参照してください。
+
+### 依存パッケージのインストール
+
+リポジトリを取得した直後や CI では、`bun.lock` に記録されたバージョンを変更せずにインストールします。
+
+```bash
+cd src/frontend/rpi-viewer
+bun ci
+```
+
+`bun ci` は `package.json` と `bun.lock` が一致しない場合にエラーとなります。依存パッケージを追加・更新するときだけ `bun add` または `bun install` を使用し、更新された `package.json` と `bun.lock` を一緒にコミットしてください。
+
+### 開発サーバーの起動
+
+```bash
+cd src/frontend/rpi-viewer
+bun run dev
+```
+
+### ビルドとテスト
+
+```bash
+bun run build
+bun run test:unit
+```
+
+フロントエンドの `package.json` と `bun.lock` は、Vue プロジェクトのルートである `src/frontend/rpi-viewer/` 直下で管理します。`node_modules/` は生成物のため Git にはコミットしません。
+
 ## ビルド方法
 Yocto 関連リポジトリを取得
 

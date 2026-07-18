@@ -1,0 +1,44 @@
+openapi: 3.0.3
+
+info:
+  title: IP Camera Config API
+  version: 0.1.0
+  description: IP カメラの設定を管理する API。
+
+servers:
+  - url: http://127.0.0.1:8080
+
+paths:
+  /api/v1/config:
+    get:
+      summary: カメラ設定を取得する
+      operationId: getCameraConfig
+      responses:
+        "200":
+          description: 取得に成功した
+          content:
+            application/json:
+              schema:
+                type: object
+                description: カメラ設定。設定項目は未定義。
+                additionalProperties: true
+        "500":
+          description: 取得に失敗した
+    put:
+      summary: カメラ設定を更新する
+      operationId: updateCameraConfig
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: カメラ設定。設定項目は未定義。
+              additionalProperties: true
+      responses:
+        "204":
+          description: 更新に成功した
+        "400":
+          description: リクエストが不正
+        "500":
+          description: 更新に失敗した

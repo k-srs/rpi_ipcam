@@ -6,6 +6,7 @@ cpputest_dep = dependency(
 http_server_tests = executable(
   'http-server-tests',
   'cpputest_integration_test.cpp',
+  'config_manager_test.cpp',
   'test_main.cpp',
   dependencies : cpputest_dep,
 )

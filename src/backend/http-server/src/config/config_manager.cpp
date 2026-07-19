@@ -1,15 +1,12 @@
 #include <stdexcept>
-#include <unordered_map>
 
 #include "config/config_manager.hpp"
 
-std::unordered_map<std::string, std::int64_t> config_table = {
-    {"capture.width", 3},
-    {"capture.height", 4},
-};
-
 ConfigManager::ConfigManager() {
-
+    config_table = {
+        {"capture.width", 3},
+        {"capture.height", 4},
+    };
 }
 
 std::int64_t ConfigManager::get(std::string key) const

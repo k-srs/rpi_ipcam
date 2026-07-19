@@ -1,7 +1,9 @@
-#include <CppUTest/TestHarness.h>
 #include <stdexcept>
 
 #include "config/config_manager.hpp"
+
+// CppUTestが定義するnewマクロと標準ライブラリの干渉を避けるため、最後に読み込む
+#include <CppUTest/TestHarness.h>
 
 TEST_GROUP(ConfigManagerTest)
 {};

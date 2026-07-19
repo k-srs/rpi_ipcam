@@ -32,7 +32,6 @@ TEST(ConfigManagerTest, SetValue)
     const auto width = manager.get("capture.width");
 
     LONGS_EQUAL(expected_width, width);
-    manager.set("capture.width", 3);
 }
 
 // 存在しないキーの場合は例外が発生する

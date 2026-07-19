@@ -8,6 +8,10 @@ std::unordered_map<std::string, std::int64_t> config_table = {
     {"capture.height", 4},
 };
 
+ConfigManager::ConfigManager() {
+
+}
+
 std::int64_t ConfigManager::get(std::string key) const
 {
     auto it = config_table.find(key);

@@ -14,5 +14,5 @@ std::int64_t ConfigManager::get(std::string key) const
     if (it != config_table.end()) {
         return it->second;
     }
-    throw std::out_of_range("key does not found");
+    throw std::out_of_range("key not found");
 }

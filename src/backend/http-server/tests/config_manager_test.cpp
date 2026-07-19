@@ -34,11 +34,18 @@ TEST(ConfigManagerTest, SetValue)
     LONGS_EQUAL(expected_width, width);
 }
 
-// 存在しないキーの場合は例外が発生する
-TEST(ConfigManagerTest, ThrowsWhenKeyDoesNotExist)
+// 存在しないキーの設定値を取得した場合は例外が発生する
+TEST(ConfigManagerTest, GetThrowsWhenKeyDoesNotExist)
 {
     ConfigManager manager;
 
     CHECK_THROWS(std::out_of_range, manager.get("unknown.key"));
+}
+
+// 存在しないキーの設定値をセットした場合は例外が発生する
+TEST(ConfigManagerTest, SetThrowsWhenKeyDoesNotExist)
+{
+    ConfigManager manager;
+
     CHECK_THROWS(std::out_of_range, manager.set("unknown.key", 0));
 }

@@ -4,12 +4,12 @@
 
 ConfigManager::ConfigManager() {
     config_table = {
-        {"capture.width", 3},
-        {"capture.height", 4},
+        {"capture.width", std::int64_t{3}},
+        {"capture.height", std::int64_t{4}},
     };
 }
 
-std::int64_t ConfigManager::get(std::string key) const
+ConfigValue ConfigManager::get(std::string key) const
 {
     auto it = config_table.find(key);
     if (it != config_table.end()) {
@@ -17,7 +17,7 @@ std::int64_t ConfigManager::get(std::string key) const
     }
     throw std::out_of_range("key not found");
 }
-void ConfigManager::set(std::string key, std::int64_t value)
+void ConfigManager::set(std::string key, ConfigValue value)
 {
     auto it = config_table.find(key);
     if (it != config_table.end()) {

@@ -3,14 +3,17 @@
 #include <cstdint>
 #include <string>
 #include <unordered_map>
+#include <variant>
+
+using ConfigValue = std::variant<std::int64_t, std::string>;
 
 class ConfigManager {
 public:
     ConfigManager();
     ~ConfigManager() = default;
 
-    std::int64_t get(std::string key) const;
-    void set(std::string key, std::int64_t value);
+    ConfigValue get(std::string key) const;
+    void set(std::string key, ConfigValue value);
 private:
-    std::unordered_map<std::string, std::int64_t> config_table;
+    std::unordered_map<std::string, ConfigValue> config_table;
 };

@@ -1,13 +1,18 @@
 #include <stdexcept>
+#include <unordered_map>
 
 #include "config/config_manager.hpp"
 
-std::int64_t ConfigManager::get(std::string_view key) const
+std::unordered_map<std::string, std::int64_t> config_table = {
+    {"capture.width", 3},
+    {"capture.height", 4},
+};
+
+std::int64_t ConfigManager::get(std::string key) const
 {
-    if (key == "capture.width") {
-        return 3;
-    } else if (key == "capture.height") {
-        return 4;
+    auto it = config_table.find(key);
+    if (it != config_table.end()) {
+        return it->second;
     }
     throw std::out_of_range("key does not found");
 }

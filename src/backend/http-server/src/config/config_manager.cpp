@@ -12,18 +12,10 @@ ConfigManager::ConfigManager() {
 
 ConfigValue ConfigManager::get(std::string key) const
 {
-    auto it = config_table.find(key);
-    if (it != config_table.end()) {
-        return it->second;
-    }
-    throw std::out_of_range("key not found");
+    return config_table.at(key);
 }
+
 void ConfigManager::set(std::string key, ConfigValue value)
 {
-    auto it = config_table.find(key);
-    if (it != config_table.end()) {
-        it->second = value;
-        return;
-    }
-    throw std::out_of_range("key not found");
+    config_table.at(key) = std::move(value);
 }

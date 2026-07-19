@@ -22,15 +22,16 @@ TEST(ConfigManagerTest, ReturnsValueForKey)
     CHECK(expected_height == height);
 }
 
-// // キーに対応した値を取得できる
-// TEST(ConfigManagerTest, ReturnsStringValueForKey)
-// {
-//     ConfigManager manager;
+// キーに対応した値を取得できる
+TEST(ConfigManagerTest, ReturnsStringValueForKey)
+{
+    ConfigManager manager;
+    ConfigValue expected_aspect_ratio = "16:9";
 
-//     const auto aspect_ratio = manager.get("capture.aspect_ratio");
+    const auto aspect_ratio = manager.get("capture.aspect_ratio");
 
-//     STRCMP_EQUAL("16:9", aspect_ratio.c_str());
-// }
+    CHECK(expected_aspect_ratio == aspect_ratio);
+}
 
 // キーに対応した値を設定できる
 TEST(ConfigManagerTest, SetValue)

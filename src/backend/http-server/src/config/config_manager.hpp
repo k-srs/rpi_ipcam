@@ -8,12 +8,13 @@
 using ConfigValue = std::variant<std::int64_t, std::string>;
 
 class ConfigManager {
-public:
+  public:
     ConfigManager();
     ~ConfigManager() = default;
 
     ConfigValue get(std::string key) const;
     void set(std::string key, ConfigValue value);
-private:
+
+  private:
     std::unordered_map<std::string, ConfigValue> config_table;
 };
